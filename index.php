@@ -7,7 +7,7 @@ if (!isset($_SESSION["usuario"])) {
   session_destroy();
   exit;
 } else {
-  header("Location:logar.php");
+ 
   //echo $_SESSION['usuario'] ;
 
 
@@ -16,7 +16,7 @@ if (!isset($_SESSION["usuario"])) {
 }
 
 //////////////////////// CONECTA NO BANCO DE DADOS
-$con = mysqli_connect('localhost', 'root', '', 'quality');
+$con = mysqli_connect('localhost', 'root', '', 'ck_projects');
 
 // Check connection
 if (mysqli_connect_errno()) {
@@ -67,7 +67,7 @@ include "./funcao_geral.php";
 <link rel="stylesheet" href="./css/bootstrap-4.5.3-dist/css/bootstrap.css" >
   <link rel="stylesheet" href="./css/w3.css">
   <link rel="stylesheet"  href="./css/icones/font-awesome/css/font-awesome.min.css" media="screen"  >
-  <title>Capixaba Quality</title>
+  <title>CK Projects</title>
 
   <link rel="shortcut icon" href="./css/check-logo.png">
 
@@ -85,61 +85,13 @@ include "./funcao_geral.php";
       font-family: Arial, Tahoma, sans-serif;
     }
 
-    .blink_me {
-      animation: blinker 5s linear infinite;
-    }
-
-
-    @keyframes blinker {
-      20% {
-        opacity: 0;
-      }
-    }
 
 
 
-
-
-
-  
-
-    /* Red border */
-    hr.new1 {
-      border-top: 1px solid black;
-    }
-
-    .footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: #212529;
-      color: white;
-      text-align: center;
-    }
-
-    .itens {
-      list-style-type: none;
-      padding: 0;
-      margin: 0;
-    }
-
-
-    .btn span.glyphicon {
-      opacity: 0;
-    }
-
-    .btn.active span.glyphicon {
-      opacity: 1;
-    }
   </style>
 
   <?php
-
   include "./principal.php";
-
-
-
   ?>
 
 

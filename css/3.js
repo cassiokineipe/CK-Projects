@@ -3,7 +3,7 @@ var livePatern = {
   context: null,
   cols: 0,
   rows: 0,
-  colors: [120, 140, 100],
+  colors: [240, 244, 200],
   triangleColors: [],
   destColors: [],
   

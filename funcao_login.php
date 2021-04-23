@@ -1,21 +1,5 @@
 <?php
 
-function busca_campo_tabela($tabela, $resultado, $campo, $consulta)
-{
-
-  $CAMPO = '';
-  $rs9 = conexao::executar("select $resultado from $tabela WHERE $campo = '$consulta' ");
-  while ($linha = mysqli_fetch_array($rs9)) {
-    $CAMPO  = $linha["$resultado"];
-  }
-
-  if ($resultado == 'UNIDADE_TRIBUTADA' and $CAMPO == '') {
-    $CAMPO = 'UN';
-  }
-
-  return $CAMPO;
-}
-
 
 ////////////////////  CRIPTOGRAFA
 
