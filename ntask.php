@@ -74,7 +74,7 @@
 <?php 
 
 
-$usuario  = $_SESSION['usuario'];
+
 
 if (!isset($_GET["CORY"])) {
   $_GET["CORY"] = "";
@@ -354,7 +354,7 @@ if ($BOTAO == "ALTERAR_DA_TABELA") {
 
 
 
-  if ($RESPONSAVEL != $usuario) {
+  if ($RESPONSAVEL != $USUARIOX) {
 
 
     $PASS = 0;
@@ -402,7 +402,7 @@ if ($BOTAO == "CRIARNOVO") {
   }
   mysqli_query($con, "INSERT INTO notas_monday (ID,QUADRO,NOME,DESCRICAO,DATAI,DATAF,STATUS,COR,DATA_REALIZADO,VISUALIZAR,ORDEM,PAG)  VALUES ('','$IDff','','','','','PENDENTE','27AE60','',1,0,1)");
 
-  mysqli_query($con, "INSERT INTO acesso_monday (ID,QUADRO,RESPONSAVEL,ORDEM)  VALUES ('','$IDff','$usuario',0)");
+  mysqli_query($con, "INSERT INTO acesso_monday (ID,QUADRO,RESPONSAVEL,ORDEM)  VALUES ('','$IDff','$USUARIOX',0)");
 }
 
 
@@ -1117,7 +1117,7 @@ while ($linha = mysqli_fetch_array($result10)) {
 
 $array = array();
 
-$result10DD  =  mysqli_query($con, "SELECT * FROM acesso_monday WHERE RESPONSAVEL = '$usuario' ORDER BY ORDEM ");
+$result10DD  =  mysqli_query($con, "SELECT * FROM acesso_monday WHERE RESPONSAVEL = '$USUARIOX' ORDER BY ORDEM ");
 
 
 
@@ -1366,9 +1366,9 @@ while ($linha = mysqli_fetch_array($result10DD)) {
                             }
 
                           ?>
-                            <option style="background-color:<?php echo $CORx ?>;color:<?php echo $LETRA ?>;font-size:20px;" value="<?PHP echo $USUARIO; ?>" class="fa">&#<?php echo $SINAL;
+                            <option style="background-color:<?php echo $CORx ?>;color:<?php echo $LETRA ?>;font-size:20px;" value="<?PHP echo $NOME; ?>" class="fa">&#<?php echo $SINAL;
                                                                                                                                                                           echo "&nbsp";
-                                                                                                                                                                          echo $USUARIO; ?></option>
+                                                                                                                                                                          echo $NOME; ?></option>
                           <?PHP  } ?>
                         </select>
 

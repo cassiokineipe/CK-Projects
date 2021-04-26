@@ -1,15 +1,15 @@
 <?php
 session_start(); // iniciar prcesso de sessão
-if (!isset($_SESSION["usuario"])) {
+if (!isset($_SESSION["USUARIOX"])) {
   header("Location:logar.php");
   session_destroy();
   exit;
 } else {
 
-  //echo $_SESSION['usuario'] ;
+  //echo $_SESSION['USUARIOX'] ;
 
 
-  $usuario  = $_SESSION['usuario'];
+  $USUARIOX  = $_SESSION['USUARIOX'];
 }
 
 //////////////////////// CONECTA NO BANCO DE DADOS

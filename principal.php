@@ -3,6 +3,7 @@
         <img src="./css/check-logo.png" width="30" height="30" class="d-inline-block align-top" alt="" loading="lazy">
         CK Projects
     </a>
+    <a href="deslogar.php" style="color: #ff6f00;" class="w3-bar-item w3-button fa fa-remove" title="Sair "><i></i></a>
 </nav>
 
 <?php 

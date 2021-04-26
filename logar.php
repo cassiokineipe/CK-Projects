@@ -289,7 +289,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
 
-    $_SESSION['usuario']  = $NOME;
+    $_SESSION['USUARIOX']  = $NOME;
 
 
   ?>
