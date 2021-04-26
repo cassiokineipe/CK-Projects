@@ -1,13 +1,11 @@
-
 <?php
- ini_set('session.gc_maxlifetime', 57600);
-session_start();
+session_start(); // iniciar prcesso de sessão
 if (!isset($_SESSION["usuario"])) {
   header("Location:logar.php");
   session_destroy();
   exit;
-} else {
- 
+} else { 
+
   //echo $_SESSION['usuario'] ;
 
 
@@ -69,7 +67,7 @@ include "./funcao_geral.php";
   <link rel="stylesheet"  href="./css/icones/font-awesome/css/font-awesome.min.css" media="screen"  >
   <title>CK Projects</title>
 
-  <link rel="shortcut icon" href="./css/check-logo.png">
+  <link rel="shortcut icon" href="./css/check-logo.png" >
 
   <style type="text/css">
     * {

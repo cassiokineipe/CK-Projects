@@ -1,8 +1,6 @@
-
-
 <?php
-  ini_set('session.gc_maxlifetime', 57600);
-session_start();  //////////// iniciar prcesso de sessão
+
+session_start();  // iniciar prcesso de sessão
 
 
 
@@ -146,10 +144,6 @@ p, h1 {
   letter-spacing: 2px;
 }
 
-
-.w-full {
-  width: 100%;
-}
 
 .text-center {
   text-align: center;
@@ -386,6 +380,18 @@ p, h1 {
 .pb-3 {
   padding-bottom: 3rem;
 }
+
+.lua{
+  width: 25%;
+}
+
+@media screen and (max-width: 450px) {
+    .lua {
+      width: 100%;
+    }
+
+  }
+  
   </style>
 
   <?php
@@ -418,6 +424,8 @@ p, h1 {
 
   $SENHA = $_POST["SENHA"];
 
+  $PASS = 0; //MUDAR A COR DO BACKGROUND QUANDO DIGITAR A SENHA
+  $NEGADO = "";
 
  $SENHA = senha($SENHA, $GX);
 
@@ -431,45 +439,62 @@ p, h1 {
 
     $NOME   = $linha["NOME"];
     $SENHA     = $linha["SENHA"];
-
+    $PASS = 1;
 
 
 
 
     $_SESSION['usuario']  = $NOME;
+    
   
 ?> <meta http-equiv="refresh" content="0.1; URL='index.php '"/> <?php
    
   }
 
+  $RED = 100;
 
+
+IF($PASS == 0 AND $NOME != "" ){
+  $RED = 255;
+  $NEGADO = "Senha invalida, tente novamente...";
+}
 
   ?>
 
 
 
 
+<canvas id="canvas"></canvas>
+
+<?php if($NEGADO != ""){ ?>
+  <div class="alert alert-danger" role="alert" style="text-align: center;color:black">
+  <?php echo $NEGADO;?>
+</div>
+<?PHP } ?>
+
+  
+<br>
+
+
+  <br>
   <br>
 
 
 
-  <br>
-  <br>
+  
 
-
-  <canvas id="canvas"></canvas>
 <center>
-<div class="my-2 mx-auto p-relative bg-dark shadow-1 blue-hover" style="width: 25%; overflow: hidden; border-radius: 10px;">
-  <div id="form-wrapper" style="max-width:500px;margin:auto;">
+<div class="my-2 mx-auto p-relative bg-dark shadow-1 blue-hover lua" style=" border-radius: 10px;">
+  <div id="form-wrapper" >
     <center>
-      <div class="container-fluid">
+      <div class="container-fluid" >
 
         <div class="card-body">
 
           <center>
             <img src="./css/image.png" style="position: relative;width:90%;border-radius:15px">
           </center>
-          <br>
+          
         <hr style="background-color: white;">
      
 
@@ -575,7 +600,90 @@ p, h1 {
 
   </div>
 
-  <script src="./css/3.js"></script>
 
+ 
+
+<script>
+var livePatern = {
+  canvas: null,
+  context: null,
+  cols: 0,
+  rows: 0,
+  colors: [230, 244, 200],
+  triangleColors: [],
+  destColors: [],
+  
+  init: function(){
+    this.canvas = document.getElementById('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.cols = Math.floor(document.body.clientWidth / 24)+3;
+    this.rows = Math.floor(document.body.clientHeight / 24) + 1;
+    
+    this.canvas.width = document.body.clientWidth;
+    this.canvas.height = document.body.clientHeight;
+    
+    this.drawBackground();
+    this.animate();
+  },
+  
+  drawTriangle: function(x, y, color, inverted){
+    inverted = inverted == undefined ? false : inverted;
+
+    this.context.beginPath();
+    this.context.moveTo(x, y);
+    this.context.lineTo(inverted ? x - 22 : x + 22, y + 11);
+    this.context.lineTo(x, y + 22);
+    this.context.fillStyle = "rgb("+<?PHP ECHO $RED;?>+","+color+","+color+")";
+    this.context.fill();
+    this.context.closePath();
+  },
+  
+  getColor: function(){    
+    return this.colors[(Math.floor(Math.random() * 3))];
+  },
+  
+  drawBackground: function(){
+    var eq = null;
+    var x = this.cols;
+    var destY = 0;
+    var color, y;
+    
+    while(x--){
+      eq = x % 2;
+      y = this.rows;
+
+      while(y--){
+        destY = Math.round((y-0.5) * 24);
+
+        this.drawTriangle(x * 24 + 2, eq == 1 ? destY : y * 24, this.getColor());
+        this.drawTriangle(x * 24, eq == 1 ? destY  : y * 24, this.getColor(), true);
+      }
+    }
+  },
+  
+  animate: function(){
+    var me = this;
+
+    var x = Math.floor(Math.random() * this.cols);
+    var y = Math.floor(Math.random() * this.rows);
+    var eq = x % 2;
+
+    if (eq == 1) {
+      me.drawTriangle(x * 24, Math.round((y-0.5) * 24) , this.getColor(), true);
+    } else {
+      me.drawTriangle(x * 24 + 2, y * 24, this.getColor());
+    }
+
+    setTimeout(function(){    
+      me.animate.call(me);
+    }, 10);
+  },
+};
+
+!function(){livePatern.init();}()
+$(window).resize(function() {
+  livePatern.init();
+});
+</script>
 
 </html>
