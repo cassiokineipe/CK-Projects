@@ -15,13 +15,16 @@ if (!isset($_SESSION["USUARIOX"])) {
 //////////////////////// CONECTA NO BANCO DE DADOS
 $con = mysqli_connect('localhost', 'root', '', 'ck_projects');
 
+
+//$con = mysqli_connect('localhost', 'ckprojects_kineipe', 'P$?v5H$B4EBq', 'ckprojects_geral');
+
 // Check connection
 if (mysqli_connect_errno()) {
   echo "Failed to connect to MySQL: " . mysqli_connect_error();
 }
 //////////////////////// CONECTA NO BANCO DE DADOS 
 
-include "./funcao_geral.php";
+
 
 header("Pragma: no-cache");
 header("Expires: Mon, 26 Jul 1997 05:00:00 GMT");
@@ -33,7 +36,19 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
 
+function data_ini_html5($dt)
+{
+  if ($dt == "0000-00-00") return '';
+  $yr = strval(substr($dt, 0, 4));
+  $mo = strval(substr($dt, 5, 2));
+  $da = strval(substr($dt, 8, 2));
+
+  $resul1 = "$yr" . "$mo" . "$da";
+  return $resul1;
+}
+
 ?>
+
 
 
 
@@ -64,7 +79,8 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
   <link rel="stylesheet" href="./css/bootstrap-4.5.3-dist/css/bootstrap.css">
   <link rel="stylesheet" href="./css/w3.css">
   <link rel="stylesheet" href="./css/icones/font-awesome/css/font-awesome.min.css" media="screen">
-  
+
+
 
 
   <title>CK Projects</title>
@@ -108,7 +124,12 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
       border: none;
       border-bottom: 5px solid red;
     }
+
+
+
+
   </style>
+
 
 
 
@@ -119,8 +140,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 <body>
 
 
-
-<?php
+  <?php
   include "./principal.php";
   ?>
 
@@ -137,6 +157,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
 </body>
+
 
 
 

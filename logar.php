@@ -207,8 +207,11 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
   $GX = gx($array[3], $array[1], $array[2], $array[0]);
 
   //////////////////////// CONECTA NO BANCO DE DADOS
-  $con = mysqli_connect("localhost", "root", "", "ck_projects");
 
+  $con = mysqli_connect('localhost', 'root', '', 'ck_projects');
+  
+  //$con = mysqli_connect('localhost', 'ckprojects_kineipe', 'P$?v5H$B4EBq', 'ckprojects_geral');
+  
   // Check connection
   if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -293,7 +296,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
   ?>
-    <meta http-equiv="refresh" content="0.1; URL='index.php '" /> <?php
+    <meta http-equiv="refresh" content="0.0001; URL='index.php '" /> <?php
 
                                                                 }
 
