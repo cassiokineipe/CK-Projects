@@ -34,60 +34,8 @@ header("Cache-Control: no-store, must-revalidate");
 header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
+include "./funcoes.php";
 
-
-function data_ini_html5($dt)
-{
-  if ($dt == "0000-00-00") return '';
-  $yr = strval(substr($dt, 0, 4));
-  $mo = strval(substr($dt, 5, 2));
-  $da = strval(substr($dt, 8, 2));
-
-  $resul1 = "$yr" . "$mo" . "$da";
-  return $resul1;
-}
-
-function compara_data($data, $valor)
-{
-
-    $arrayx = str_split($data);
-
-    while ($valor > 0) {
-        $valor = $valor - 1;
-        $arrayx[7] = $arrayx[7] + 1;
-
-
-        if ($arrayx[7] >= 10) {
-            $arrayx[7] = 0;
-            $arrayx[6] = $arrayx[6] + 1;
-        }
-
-
-
-
-        if ($arrayx[6] >= 3) {
-            $arrayx[5] = $arrayx[5] + 1;
-            $arrayx[6] = $arrayx[6] - 3;
-
-
-
-            if ($arrayx[5] >= 10) {
-                $arrayx[4] = $arrayx[4] + 1;
-                $arrayx[5] = 0;
-            }
-
-            if ($arrayx[4] == 1 and $arrayx[5] > 2) {
-                $arrayx[3] = $arrayx[3] + 1;
-                $arrayx[4] = 0;
-                $arrayx[5] = 0;
-            }
-        }
-    }
-
-    $novadata = implode("", $arrayx);
-
-    return $novadata;
-}
 ?>
 
 
@@ -127,47 +75,15 @@ function compara_data($data, $valor)
   <title>CK Projects</title>
 
   <link rel="shortcut icon" href="./css/check-logo.png">
-
+  <link href="./css/estilos.css" rel="stylesheet">
   <style type="text/css">
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* para garantir que estes elementos ocuparão toda a tela */
-    body,
-    html {
+    html,
+    body {
       width: 100%;
       height: 100%;
       font-family: Arial, Tahoma, sans-serif;
-      background: url(./css/skulls.png),  linear-gradient( #353935,#1B1212);
-   }
-
-    .styled-link:hover,
-    .styled-link:focus,
-    .styled-link:active {
-      color: #536dfe;
+      background: url(./css/skulls.png), linear-gradient(to right, #1B1212, #1B1212);
     }
-
-    .shadow-1 {
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
-    }
-
-    .blue-hover {
-      transition: all 0.25s ease-in;
-      border-bottom: 5px solid transparent;
-    }
-
-    .blue-hover:hover {
-      transform: translateY(-5px);
-
-      border: none;
-      border-bottom: 5px solid red;
-    }
-
-
-
-
   </style>
 
 

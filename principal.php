@@ -6,7 +6,7 @@
 </span></a>
 <a href="index.php" style="background-color:transparent;color:#e62020;top:10px;position:relative" class="w3-bar-item w3-right w3-button fa fa-home  fa-fw"></a>
 
-<a href="#" style="background-color:transparent;color:#e62020;top:10px;position:relative" class="w3-bar-item w3-button w3-right fa fa-cog fa-fw"></a>
+<a href="index.php?ACAO_MENU=usuario" style="background-color:transparent;color:#e62020;top:10px;position:relative" class="w3-bar-item w3-button w3-right fa fa-cog fa-fw"></a>
 
 <a href="deslogar.php" style="background-color:transparent;color:#e62020;top:10px;position:relative" class="w3-bar-item  w3-right w3-button fa fa-remove" title="Sair "></a>
      
@@ -83,7 +83,7 @@ if ($ACAO_MENU != "" and $ACAO_MENU != "Portifolio") {
 
 
 
-                        <h5>Contador De Fodinha</h5>
+                        <h5>Contador</h5>
 
                     </div>
 
@@ -126,5 +126,7 @@ if ($ACAO_MENU != "" and $ACAO_MENU != "Portifolio") {
 
         </div>
     </form>
+
+
 
 <?PHP } ?>

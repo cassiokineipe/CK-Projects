@@ -4,7 +4,7 @@ session_start();  // iniciar prcesso de sessão
 
 
 
-include "./funcao_login.php";
+include "./funcoes.php";
 
 
 $array = array(2, 9, 9, 1);
@@ -53,153 +53,10 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
 
-  <link href="./css/1.css" rel="stylesheet">
-  <link href="./css/2.css" rel="stylesheet">
+
+  <link href="./css/estilos.css" rel="stylesheet">
 
 
-  <style type="text/css">
-    * {
-      margin: 0;
-      padding: 0;
-    }
-
-    /* para garantir que estes elementos ocuparão toda a tela */
-    body,
-    html {
-      width: 100%;
-      height: 100%;
-      font-family: Arial, Tahoma, sans-serif;
-    }
-
-
-    .footer {
-      position: fixed;
-      left: 0;
-      bottom: 0;
-      width: 100%;
-      background-color: #212529;
-      color: white;
-      text-align: center;
-    }
-
-
-    .div {
-      box-shadow: 10px 10px 5px grey;
-    }
-
-    body {
-      margin: 0;
-      padding: 0;
-      font-size: 16px;
-      line-height: 1.5;
-      text-rendering: optimizeLegibility;
-      font-variant-ligatures: none;
-      box-sizing: border-box;
-      font-family: 'Roboto', sans-serif;
-      background-color: #fafafa;
-    }
-
-    body::before,
-    body::after {
-      content: "";
-      display: table;
-      clear: both;
-    }
-
-    body * {
-      box-sizing: inherit;
-    }
-
-    p,
-    h1 {
-      margin: 0;
-      padding: 0;
-    }
-
-
-
-
-
-
-
-    .d-block {
-      display: block;
-    }
-
-    .d-inline-block {
-      display: inline-block;
-    }
-
-    .p-relative {
-      position: relative;
-    }
-
-
-
-
-
-
-    .small {
-      font-size: 0.75rem;
-    }
-
-    .card-heading {
-      font-size: 2.25rem;
-    }
-
-    .styled-link {
-      text-decoration: none;
-      outline: none;
-      color: #2196fe;
-      transition: all 0.25s ease-in;
-    }
-
-    .styled-link:hover,
-    .styled-link:focus,
-    .styled-link:active {
-      color: #536dfe;
-    }
-
-    .shadow-1 {
-      box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.15);
-    }
-
-    .blue-hover {
-      transition: all 0.25s ease-in;
-      border-bottom: 5px solid transparent;
-    }
-
-    .blue-hover:hover {
-      transform: translateY(-5px);
-
-      border: none;
-      border-bottom: 5px solid red;
-    }
-
-
-
-
-
-
-
-
-    /**Margin and padding utilities*/
-    .mx-auto {
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .lua {
-      width: 25%;
-    }
-
-    @media screen and (max-width: 450px) {
-      .lua {
-        width: 100%;
-      }
-
-    }
-  </style>
 
   <?php
 
@@ -209,9 +66,9 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
   //////////////////////// CONECTA NO BANCO DE DADOS
 
   $con = mysqli_connect('localhost', 'root', '', 'ck_projects');
-  
+
   //$con = mysqli_connect('localhost', 'ckprojects_kineipe', 'P$?v5H$B4EBq', 'ckprojects_geral');
-  
+
   // Check connection
   if (mysqli_connect_errno()) {
     echo "Failed to connect to MySQL: " . mysqli_connect_error();
@@ -298,19 +155,19 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
   ?>
     <meta http-equiv="refresh" content="0.0001; URL='index.php '" /> <?php
 
-                                                                }
+                                                                    }
 
 
-                                                                if ($SIGNUP != "") {
-                                                                  $RED = 50;
-                                                                }
+                                                                    if ($SIGNUP != "") {
+                                                                      $RED = 50;
+                                                                    }
 
-                                                                if ($PASS == 0 and $NOME != "") {
+                                                                    if ($PASS == 0 and $NOME != "") {
 
-                                                                  $NEGADO = "Senha invalida, tente novamente...";
-                                                                }
+                                                                      $NEGADO = "Senha invalida, tente novamente...";
+                                                                    }
 
-                                                                  ?>
+                                                                      ?>
 
 
 
@@ -336,7 +193,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
   <center>
-    <div class="my-2 mx-auto p-relative bg-dark shadow-1 blue-hover lua" style="opacity:0.9; border-radius: 10px;background: url(./css/grid.png),  linear-gradient( #343a40,#343a40);">
+    <div class="my-2 mx-auto p-relative bg-dark shadow-1 blue-hover lua" style=" border-radius: 10px;background: url(./css/grid.png),  linear-gradient( #343a40,#343a40);">
       <div id="form-wrapper">
         <center>
           <div class="container-fluid">
@@ -385,8 +242,9 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
                             <option value="">Name</option>
 
                             <?PHP
-                            $result10  =  mysqli_query($con, "SELECT * FROM acesso ORDER BY NOME ");
                             $cont = 0;
+                            $result10  =  mysqli_query($con, "SELECT * FROM acesso ORDER BY NOME ");
+
                             $COR = "white";
                             while ($linha = mysqli_fetch_array($result10)) {
 
@@ -402,7 +260,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
                             ?>
 
-                              <option value="<?php echo $NOME; ?>" style="background-color:<?php echo $COR ?>;color:black;font-size:20px;"><?php echo $NOME ?></option>
+                              <option value="<?php echo $NOME; ?>" style="background-color:<?php echo $COR; ?>;color:black;font-size:20px;"><?php echo $NOME; ?></option>
 
                             <?php  } ?>
 

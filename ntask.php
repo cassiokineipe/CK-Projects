@@ -1074,7 +1074,7 @@ while ($linha = mysqli_fetch_array($result10)) {
           <div class="card-body">
 
       <center>
-        <div onclick="window.location.href = 'index.php?ACAO_MENU=ntask' " class="p-2 mb-1 bg-dark text-white" style="background: url(grid.png),  linear-gradient( #343a40, black);text-align:center;border-radius:20px;font-size:16px;"><b>&nbsp&nbsp &nbsp&nbsp MENU DE PROJETOS &nbsp&nbsp </b>
+        <div onclick="window.location.href = 'index.php?ACAO_MENU=ntask' " class="p-2 mb-1  text-white" style="background: url(grid.png),  linear-gradient( #343a40, black);text-align:center;border-radius:20px;font-size:16px;"><b>&nbsp&nbsp &nbsp&nbsp MENU DE PROJETOS &nbsp&nbsp </b>
 
 
           <td class="bg-<?php echo $COR; ?>"> <a href="index.php?ACAO_MENU=ntask&BOTAO=CRIARNOVO" title="CRIAR Registro." class="btn btn-success"> <i style="font-size:15px;size:10px" class="fa"> &#xf067;</i></a> </td>

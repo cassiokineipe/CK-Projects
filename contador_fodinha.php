@@ -1,16 +1,29 @@
 <script>
     function gravar(ID) {
 
+      if(ID == 'RODADA'){
 
+        var RODADA = document.getElementById('RODADA').value;
+        window.location.href = "index.php?ACAO_MENU=contador_fodinha&RODADA=" + RODADA;
 
-
-
+      }else{
+      
         var VIDAS = document.getElementById(ID + 'V').value;
         var NOME = document.getElementById(ID + 'N').value;
 
 
 
-        window.location.href = "index.php?ACAO_MENU=contador_fodinha&ID=" + ID + "&VIDAS=" + VIDAS + "&NOME=" + NOME + "&BOTAO=ALTERAR_DA_TABELA";
+        window.location.href = "index.php?ACAO_MENU=contador_fodinha&ID=" + ID + "&VIDAS=" + VIDAS+"&RODADA=" + RODADA + "&NOME=" + NOME + "&BOTAO=ALTERAR_DA_TABELA";
+
+        
+      }
+
+  
+
+
+
+
+
 
     }
 </script>
@@ -43,10 +56,21 @@ if (!isset($_GET["BOTAO"])) {
 
 $BOTAO = $_GET["BOTAO"];
 
+if (!isset($_GET["RODADA"])) {
+    $_GET["RODADA"] = "";
+}
+
+$RODADA = $_GET["RODADA"];
+
+
 
 if ($BOTAO == "ALTERAR_DA_TABELA") {
 
-    mysqli_query($con, "UPDATE fodinha SET NOME='$NOME', VIDAS = '$VIDAS'   WHERE ID = '$ID' ");
+    mysqli_query($con, "UPDATE fodinha SET NOME='$NOME', VIDAS = '$VIDAS'  WHERE ID = '$ID' ");
+}
+if ($RODADA != "") {
+
+    mysqli_query($con, "UPDATE fodinha SET  RODADA = '$RODADA'   WHERE RESPONSAVEL = '$USUARIOX' ");
 }
 
 
@@ -59,11 +83,23 @@ if ($BOTAO == "CRIARNOVO") {
 
 
 
-    mysqli_query($con, "INSERT INTO fodinha (ID,DATA,RESPONSAVEL,NOME,VIDAS)  VALUES ('','$DATA','$USUARIOX','',3)");
+    mysqli_query($con, "INSERT INTO fodinha (ID,DATA,RESPONSAVEL,NOME,VIDAS,RODADA)  VALUES ('','$DATA','$USUARIOX','',3,1)");
 }
 
 if ($BOTAO == "EXCLUIR") {
     mysqli_query($con, "DELETE FROM fodinha WHERE ID = '$ID'");
+}
+
+
+$result10DD  =  mysqli_query($con, "SELECT * FROM fodinha WHERE RESPONSAVEL = '$USUARIOX' GROUP BY RODADA");
+
+
+
+
+while ($linha = mysqli_fetch_array($result10DD)) {
+
+    $RODADA  = $linha["RODADA"];
+
 }
 
 ?>
@@ -75,8 +111,8 @@ if ($BOTAO == "EXCLUIR") {
         <div class="card-body">
 
             <center>
-                <div class="p-2 mb-1 bg-dark text-white" style="background: url(grid.png),  linear-gradient( #343a40, black);text-align:center;border-radius:20px;font-size:16px;"><b>&nbsp&nbsp &nbsp&nbsp Contador Fodinha &nbsp&nbsp </b>
-
+                <div class="p-2 mb-1 bg-dark text-white" style="background: url(grid.png),  linear-gradient( #343a40, black);text-align:center;border-radius:20px;font-size:16px;"><b> Contador &nbsp&nbsp </b>
+               <input onchange="gravar('RODADA')" style="font-size:15px;color:black;width:15%;display:inline-block" id="RODADA" type="number" name="RODADA" value="<?PHP ECHO $RODADA;?>" class="form-control" />
 
                     <td class="bg-<?php echo $COR; ?>"> <a href="index.php?ACAO_MENU=contador_fodinha&BOTAO=CRIARNOVO" title="Adicionar player." class="btn btn-success"> <i style="font-size:15px;size:10px" class="fa"> &#xf067;</i></a> </td>
 
@@ -152,7 +188,7 @@ if ($BOTAO == "EXCLUIR") {
 
 
 
-                            <th class="bg-<?php echo $COR; ?>" scope="row" style="width:70%"> <input onchange="gravar('<?php echo $ID; ?>')" style="font-size:15px;color:black;" id="<?php echo $ID; ?>N" type="text" name="NOME" value="<?php echo $NOME; ?>" class="form-control" /></th>
+                            <th class="bg-<?php echo $COR; ?>" scope="row" style="width:70%"> <input onchange="gravar('<?php echo $ID; ?>')" style="font-size:15px;color:black;" id="<?php echo $ID; ?>N" type="text" name="NOME" value="<?php echo $NOME; ?>" class="form-control" autofocus /></th>
 
                             <th class="bg-<?php echo $COR; ?>" scope="row"> <input onchange="gravar('<?php echo $ID; ?>')" style="font-size:15px;color:black;" id="<?php echo $ID; ?>V" type="number" name="VIDAS" value="<?php echo $VIDAS; ?>" class="form-control" /></th>
 
