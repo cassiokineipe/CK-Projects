@@ -1,12 +1,16 @@
 <div class="w3-bar w3-top w3-black w3-large" style="z-index:4;background: url(grid.png),  linear-gradient( #343a40, black);">
+<span class="w3-bar-item w3-left ">
+<a href="index.php">
+<font style="font-size: 25px;" class="lua " >CK Projects</font>
 
-<a href="deslogar.php" style="color: #ff6f00;background-color:transparent;" class="w3-bar-item w3-button fa fa-remove" title="Sair "></a>
+</span></a>
+<a href="index.php" style="background-color:transparent;color:#e62020;top:10px;position:relative" class="w3-bar-item w3-right w3-button fa fa-home  fa-fw"></a>
+
+<a href="#" style="background-color:transparent;color:#e62020;top:10px;position:relative" class="w3-bar-item w3-button w3-right fa fa-cog fa-fw"></a>
+
+<a href="deslogar.php" style="background-color:transparent;color:#e62020;top:10px;position:relative" class="w3-bar-item  w3-right w3-button fa fa-remove" title="Sair "></a>
      
-    <span class="w3-bar-item w3-right ">
-
-    <font style="font-size: 25px;" class="lua " color="white">CK Projects 1.0</font>
-      <a href="index.php"><img src="./css/image.png" width="100" style="text-align: center;" height="50" class="d-inline-block align-top" alt="">
-    </span></a>
+   
   </div>
 <br>
 <br>
@@ -103,7 +107,21 @@ if ($ACAO_MENU != "" and $ACAO_MENU != "Portifolio") {
 
             </div>
 
+            <div class="w3-quarter ">
+                <button name="ACAO_MENU" value="" class="btn-block btn-dark  blue-hover">
+                    <div class="w3-container w3-blue w3-padding-16   ">
+                        <div><i class="fa fa-angellist w3-xxxlarge"></i></div>
 
+
+
+
+                        <h5>Coming Soon</h5>
+
+                    </div>
+
+                </button>
+
+            </div>
 
 
         </div>

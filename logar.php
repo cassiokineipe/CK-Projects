@@ -336,7 +336,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
 
 
   <center>
-    <div class="my-2 mx-auto p-relative bg-dark shadow-1 blue-hover lua" style=" border-radius: 10px;background: url(grid.png),  linear-gradient( #343a40,#343a40);">
+    <div class="my-2 mx-auto p-relative bg-dark shadow-1 blue-hover lua" style="opacity:0.9; border-radius: 10px;background: url(./css/grid.png),  linear-gradient( #343a40,#343a40);">
       <div id="form-wrapper">
         <center>
           <div class="container-fluid">

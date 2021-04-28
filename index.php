@@ -47,6 +47,47 @@ function data_ini_html5($dt)
   return $resul1;
 }
 
+function compara_data($data, $valor)
+{
+
+    $arrayx = str_split($data);
+
+    while ($valor > 0) {
+        $valor = $valor - 1;
+        $arrayx[7] = $arrayx[7] + 1;
+
+
+        if ($arrayx[7] >= 10) {
+            $arrayx[7] = 0;
+            $arrayx[6] = $arrayx[6] + 1;
+        }
+
+
+
+
+        if ($arrayx[6] >= 3) {
+            $arrayx[5] = $arrayx[5] + 1;
+            $arrayx[6] = $arrayx[6] - 3;
+
+
+
+            if ($arrayx[5] >= 10) {
+                $arrayx[4] = $arrayx[4] + 1;
+                $arrayx[5] = 0;
+            }
+
+            if ($arrayx[4] == 1 and $arrayx[5] > 2) {
+                $arrayx[3] = $arrayx[3] + 1;
+                $arrayx[4] = 0;
+                $arrayx[5] = 0;
+            }
+        }
+    }
+
+    $novadata = implode("", $arrayx);
+
+    return $novadata;
+}
 ?>
 
 
@@ -99,9 +140,8 @@ function data_ini_html5($dt)
       width: 100%;
       height: 100%;
       font-family: Arial, Tahoma, sans-serif;
-      background-color: cornflowerblue;
-
-    }
+      background: url(./css/skulls.png),  linear-gradient( #353935,#1B1212);
+   }
 
     .styled-link:hover,
     .styled-link:focus,

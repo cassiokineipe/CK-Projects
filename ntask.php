@@ -1344,10 +1344,10 @@ while ($linha = mysqli_fetch_array($result10DD)) {
                           while ($linha = mysqli_fetch_array($result10cc)) {
 
 
-                            $NOME  = $linha["NOME"];
+                            $NOME_USUARIO  = $linha["NOME"];
                             $SINAL = "xf234";
                             $LETRA  = "GREEN";
-                            $result10DDYY  =  mysqli_query($con, "SELECT * FROM acesso_monday WHERE RESPONSAVEL = '$NOME' AND QUADRO = '$ID'  ");
+                            $result10DDYY  =  mysqli_query($con, "SELECT * FROM acesso_monday WHERE RESPONSAVEL = '$NOME_USUARIO' AND QUADRO = '$ID'  ");
 
                             while ($linha = mysqli_fetch_array($result10DDYY)) {
 
@@ -1366,9 +1366,9 @@ while ($linha = mysqli_fetch_array($result10DD)) {
                             }
 
                           ?>
-                            <option style="background-color:<?php echo $CORx ?>;color:<?php echo $LETRA ?>;font-size:20px;" value="<?PHP echo $NOME; ?>" class="fa">&#<?php echo $SINAL;
+                            <option style="background-color:<?php echo $CORx ?>;color:<?php echo $LETRA ?>;font-size:20px;" value="<?PHP echo $NOME_USUARIO; ?>" class="fa">&#<?php echo $SINAL;
                                                                                                                                                                           echo "&nbsp";
-                                                                                                                                                                          echo $NOME; ?></option>
+                                                                                                                                                                          echo $NOME_USUARIO; ?></option>
                           <?PHP  } ?>
                         </select>
 
