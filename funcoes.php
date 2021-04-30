@@ -10,6 +10,17 @@ function data_ini_html5($dt)
   return $resul1;
 }
 
+
+function inverteData($data)
+{
+    if (count(explode("/", $data)) > 1) {
+        return implode("-", array_reverse(explode("/", $data)));
+    } elseif (count(explode("-", $data)) > 1) {
+        return implode("/", array_reverse(explode("-", $data)));
+    }
+}
+
+
 function compara_data($data, $valor)
 {
 

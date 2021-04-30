@@ -365,7 +365,7 @@ header("Cache-Control: post-check=-1, pre-check=-1", false);
       init: function() {
         this.canvas = document.getElementById('canvas');
         this.context = this.canvas.getContext('2d');
-        this.cols = Math.floor(document.body.clientWidth / 24) + 3;
+        this.cols = Math.floor(document.body.clientWidth / 24) + 2;
         this.rows = Math.floor(document.body.clientHeight / 24) + 1;
 
         this.canvas.width = document.body.clientWidth;
