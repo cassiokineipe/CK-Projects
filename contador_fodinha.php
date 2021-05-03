@@ -82,7 +82,7 @@ $VENCEDOR = $_POST["VENCEDOR"];
 if ($BOTAO == "Recomeçar") {
     $DATA = date("Ymd");
     mysqli_query($con, "INSERT INTO historico_fodinha (ID,RESPONSAVEL,DATA,VENCEDOR)  VALUES ('','$USUARIOX','$DATA','$VENCEDOR')");
-    mysqli_query($con, "UPDATE fodinha SET  VIDAS = 3   WHERE RESPONSAVEL = '$USUARIOX' ");
+    mysqli_query($con, "UPDATE fodinha SET  VIDAS = 3  , RODADA=1 WHERE RESPONSAVEL = '$USUARIOX' ");
 }
 
 if ($BOTAO == "ALTERAR_DA_TABELA") {
@@ -90,7 +90,7 @@ if ($BOTAO == "ALTERAR_DA_TABELA") {
     mysqli_query($con, "UPDATE fodinha SET NOME='$NOME', VIDAS = '$VIDAS'  WHERE ID = '$ID' ");
 }
 if ($RODADA != "") {
-
+    $RODADA = $RODADA+1;
     mysqli_query($con, "UPDATE fodinha SET  RODADA = '$RODADA'   WHERE RESPONSAVEL = '$USUARIOX' ");
 }
 
@@ -202,8 +202,8 @@ while ($linha = mysqli_fetch_array($result10DD)) {
         <div class="card-body">
 
             <center>
-                <div class="p-2 mb-1 bg-dark text-white" style="background: url(grid.png),  linear-gradient( #343a40, black);text-align:center;border-radius:20px;font-size:16px;"><b> Contador &nbsp&nbsp </b>
-               <input onchange="gravar('RODADA')" style="font-size:15px;color:black;width:15%;display:inline-block" id="RODADA" type="number" name="RODADA" value="<?PHP ECHO $RODADA;?>" class="form-control" />
+                <div class="p-2 mb-1 bg-dark text-white" style="background: url(grid.png),  linear-gradient( #343a40, black);text-align:center;border-radius:20px;font-size:16px;"><b> Rodada: &nbsp&nbsp </b>
+               <input onclick="gravar('RODADA')" style="font-size:15px;color:black;width:45px;display:inline-block;text-align:center" id="RODADA" type="text" name="RODADA" value="<?PHP ECHO $RODADA;?>" class="form-control" />
 
                     <td class="bg-<?php echo $COR; ?>"> <a href="index.php?ACAO_MENU=contador_fodinha&BOTAO=CRIARNOVO" title="Adicionar player." class="btn btn-success"> <i style="font-size:15px;size:10px" class="fa"> &#xf067;</i></a> </td>
                     <td class="bg-<?php echo $COR; ?>"> <a href="index.php?ACAO_MENU=contador_fodinha&BOTAO=HISTORICO" title="Ver Historico." class="btn btn-primary"> <i style="font-size:15px;size:10px" class="fa"> &#xf02d;</i></a> </td>
